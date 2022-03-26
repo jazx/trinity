@@ -1,0 +1,13 @@
+#!/bin/bash
+
+basedir=`readlink -e $0 | sed 's:\/[^\/]*$::g'`
+
+FILES="`ls $basedir/../voice`"
+
+if [ -z "$1" ]; then
+	echo 'uso: trinity-randomwav [opcion]'
+	echo -n "opciones: " ; echo $FILES
+	exit
+fi
+
+aplay -q `ls $basedir/../voice/$1/* | shuf -n 1`

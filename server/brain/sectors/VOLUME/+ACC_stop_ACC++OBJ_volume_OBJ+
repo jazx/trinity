@@ -1,0 +1,11 @@
+#!/bin/bash
+
+INGRESO="`echo $2 | sed 's/+/ /g' | sed 's/^@//g'`"
+USUARIO=$1
+
+SINK=`pacmd stat | awk -F": " '/^Default sink name: /{print $2}'`
+
+pactl set-sink-mute $SINK 1
+
+MSG="Volumen DESACTIVADO"
+echo $MSG

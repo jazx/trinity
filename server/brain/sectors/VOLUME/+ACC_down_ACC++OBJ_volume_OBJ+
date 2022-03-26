@@ -1,0 +1,9 @@
+#!/bin/bash
+
+INGRESO="`echo $2 | sed 's/+/ /g' | sed 's/^@//g'`"
+USUARIO=$1
+
+setvol 15 -
+
+MSG="`setvol get`"
+echo $MSG

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+USER=$1
+INPUTTXT=$2
+
+
+
+QUESTION="Hola. Cual es tu nombre?"
+
+WAIT_TIME='20s'
+
+FINGER_FILE=sayhello
+
+TIME_OUT_ACTION='
+
+notify-send "Trinity" "Nadie me contesta  :("
+
+'
+
+
+#################################################################################
+##########  NO EDIT #############################################################
+#################################################################################
+../bin/trinity-makequestion "$QUESTION" "$WAIT_TIME" "$FINGER_FILE" "$TIME_OUT_ACTION"

@@ -1,0 +1,46 @@
+Los archivos de configuracion deben editarse con precaucion
+
+>>>>>>>>>>>>>>>>>>>
+markopolo_conf.py -
+Define el puerto y el password del servidor 'brain'.
+
+>>>>>>>>>>>>>
+screen_conf -
+Establece una configuracion personalizada para la aplicacion 'screen' dentro de la cual se
+ejecutan todos los programas
+
+>>>>>>>>>>>>>>>
+commands.conf - 
+Define los comandos rapidos. Se activan sin analisis de sintaxis, desde el modulo llamado 'spinal_reflex'.
+
+>>>>>>>>>>>>>>>>>>
+dictionary1.conf - 
+Define los TAGS para el primer analisis de sintaxis desde el modulo 'dicc', llamado a su vez por 'wernicke'.
+Con esto se genera el primer filtro, y se redirige a un 'sector'.
+
+>>>>>>>>>
+sectors - 
+Es un directorio donde se encuentran cada uno de los 'sectores'. Cada sector contiene un diccionario específico,
+con el cual se efectuará el segundo analisis de sintaxis.
+Cada sector incluye:
+    - dictionary2.conf  (segundo diccionario, especifico de cada sector)
+    - +NOTAGS+          (script bash que se ejecuta si luego del analisis de sintaxis no hay acciones definidas) 
+    - ejecutables       (ej:  +ACC_up_ACC++OBJ_volume_OBJ+   ...   Definen una accion para las TAGS encontradas)
+
+    *(+NOTAGS+ y los 'ejecutables' deben tener permisos de ejecuccion)
+
+
+>>>>>>>>>
+answers - 
+Es un directorio donde se encuentran los scripts para procesar las 'respuestas'. Las preguntas que el servidor
+realiza pueden partir (es decir 'ser creadas') en los diferentes sectores. Pero las respuestas siempre son
+dirigidas a este directorio. Es decir que en este sitio coexisten las diferentes respuestas que provienen de
+distintos sectores.
+Los archivos deben tener permisos de ejecución.
+
+
+
+
+
+
+

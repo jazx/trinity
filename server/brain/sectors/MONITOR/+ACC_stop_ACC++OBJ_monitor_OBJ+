@@ -1,0 +1,12 @@
+#!/bin/bash
+
+INGRESO=$2
+USUARIO=$1
+
+trinity-randomwav endwork &
+
+notify-send 'Trinity' 'Apago el monitor'
+
+xset dpms force off
+
+echo 'El monitor fue apagado'

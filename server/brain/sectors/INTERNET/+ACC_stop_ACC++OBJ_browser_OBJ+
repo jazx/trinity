@@ -1,0 +1,12 @@
+#!/bin/bash
+
+INGRESO=$2
+USUARIO=$1
+
+trinity-randomwav working &
+
+notify-send 'Trinity' 'Cerrando el navegador web'
+
+pkill firefox &> /dev/null &
+
+echo 'Firefox fue cerrado'
