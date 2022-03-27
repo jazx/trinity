@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8">
+    <link rel="icon" href="data:;base64,=">
+    <base target="cont"><title>Trinity Client</title>
+    <script type="text/javascript" src="jquery.js"></script>
+<style>
+  .transpa  {
+    background-color: transparent;
+    border: 1px solid #FF6262;
+    color: #FF1111;
+    text-align: center;
+    font-family: DejaVu Sans;
+    font-size: 12px;
+}    
+
+  .parcialstyle  {
+    border: 0px solid grey;
+    color: rgb(242, 192, 192);
+    font-family: DejaVu Sans; 
+    font-size: 10px;
+}
+
+  .respuestastyle  {
+    border: 0px solid grey;
+    margin-left: 0px;
+    color: #000000;
+    font-family: DejaVu Sans;
+    font-size: 12px;
+}
+  .mostrar  {
+    border: 0px solid grey;
+    margin-left: 0px;
+    color: #000000;
+    font-family: DejaVu Sans;
+    font-size: 12px;
+}
+	.latabla {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+</style></head>
+<body style="color: rgb(0,0,0); caret-color: red; text-align:center; background-color: rgb(242, 192, 192);" alink="#990000" link="#990000" vlink="#990000">
+<br>
+<table style="text-align: center; vertical-align: middle;" border="0" cellpadding="1" cellspacing="1" class="latabla">
+<td style="vertical-align: middle; text-align:center; height: 50px; width: 50px">
+<img src="./bigmic.png" width="50" height="50"  id="acc"><br>
+<small><div class="parcialstyle" id="resultadoparcial">(detenido)</div></small><br>
+<div class="mostrar" id="showall">...</div><br>
+<small><input size="50" class="transpa" id="finalTranscript" onkeypress="if(event.keyCode==13) {javascript:exeorden_tiped();}"></small><br>
+<img style="text-align: center;" src="./comm-static.png" id="separa"><br>
+<div class="respuestastyle" id="balresp">...</div><br><br><br>
+</td>
+
+</table>
+
+<script>
+
+// Variables de configuracion - deben estar de acuerdo a lo establecido en 'markopolo/config'
+
+// mpport es el puerto en el que corre el servidor "brain"
+var mpport = '9090'
+// mpuser es el usuario que generara la orden en el cliente web
+var mpuser = 'pedrito'
+// mppass es la clave del servidor 'brain'
+var mppass = 'paris'
+        		
+
+
+
+
+
+				function exeorden_tiped(){
+        			// Obtenemos el valor del texto por el id
+        			var porId=document.getElementById("finalTranscript").value;
+
+
+					// hacemos get al servidor
+					console.log('voy a hacer el get request')
+               const mygetrq = new XMLHttpRequest();
+               //var urlbase = 'http://localhost:9080/PSW_venecia_PSWUSR_marcos_USRCOM_@';
+               var urlbase = 'http://localhost:' + mpport + '/PSW_' + mppass + '_PSWUSR_' + mpuser + '_USRCOM_@';
+               var urlcontenido = porId.replace(/ /g, "+") ;
+               var urlcierre = '_COM';
+					const url= urlbase + urlcontenido + urlcierre;
+					mygetrq.open("GET", url);
+					mygetrq.send();
+					
+					mygetrq.onreadystatechange = (e) => {
+					console.log('ahora viene la respuesta del get a: ' + url)
+					
+					var recibido = mygetrq.responseText;
+				  	
+				  	console.log('recibido tiene: ' + recibido)					
+							  	
+				  	// Imprimir en pantalla      
+					document.getElementById("balresp").innerHTML=recibido;
+					}
+				};
+	
+	
+	
+        window.onload = function () {
+
+            var recognition = new webkitSpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+            recognition.lang = "es-AR";
+            
+            // poner aqui lo que quiero que inicio automaticamente
+            
+            // repeatedGreetingsLoop()
+            
+            
+
+				//document.getElementById('mic').src = "mic.png";
+				document.getElementById('acc').src = "bigmic.png";
+			
+				
+				var p = document.getElementById('acc');
+			
+				p.onclick = function () {
+					recognition.start();	
+				}
+
+			
+				function stoprecog() {
+			
+					console.log("inciando funcion stopcog");
+					recognition.stop();
+					document.getElementById("resultadoparcial").innerHTML="(procesando)"
+            	let etiquetaAudiof = document.createElement("audio")
+            	etiquetaAudiof.setAttribute("src", "./endlisten.wav")
+            	etiquetaAudiof.play()
+				}				
+			
+				
+			
+            
+ 
+            //events
+ 
+            recognition.onaudiostart = function (event) {
+                console.log("onaudiostart");
+            };
+ 
+            recognition.onsoundstart = function (event) {
+                console.log("onsoundstart");
+            };
+ 
+            recognition.onspeechstart = function (event) {
+                console.log("onspeechstart");
+            };
+ 
+            recognition.onspeechend = function (event) {
+                console.log("onspeechend");
+            };
+ 
+            recognition.onsoundend = function (event) {
+                console.log("onsoundend");
+ 
+            };
+ 
+            recognition.onaudioend = function (event) {
+                console.log("onaudioend");
+ 
+            };
+ 
+            recognition.onresult = function (event) {
+                console.log("onresult");
+                var interimResult = '',
+                    finalResult = '';
+                for (var i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        finalResult = event.results[i][0].transcript;
+                        
+                        if (finalResult != "") {
+                        
+                        document.getElementById("showall").innerHTML=finalResult;
+                        
+                        console.log('iniciando get')
+                        
+                        const mygetrq = new XMLHttpRequest();
+                        //var urlbase = 'http://localhost:9080/PSW_venecia_PSWUSR_marcos_USRCOM_@';
+                        var urlbase = 'http://localhost:' + mpport + '/PSW_' + mppass + '_PSWUSR_' + mpuser + '_USRCOM_@';
+                        var urlcontenido = finalResult.replace(/ /g, "+") ;
+                        var urlcierre = '_COM';
+								const url= urlbase + urlcontenido + urlcierre;
+								mygetrq.open("GET", url);
+								mygetrq.send();
+
+								mygetrq.onreadystatechange = (e) => {
+									console.log(mygetrq.responseText)
+									var recibido = mygetrq.responseText;
+									
+									// Imprimir en pantalla
+									document.getElementById("showall").innerHTML="...";
+									document.getElementById("balresp").innerHTML=recibido;
+									}
+								}
+								
+                    	
+                    	} else {
+                        interimResult += event.results[i][0].transcript;
+                    	}
+                }
+ 
+                finalTranscript.value = finalResult;
+                
+                //document.getElementById("resultadoparcial").innerHTML=interimResult;
+                document.getElementById("showall").innerHTML=interimResult;
+                
+                var porId=document.getElementById("finalTranscript").value;
+                document.getElementById("finalTranscript").innerHTML=finalResult;
+                
+                
+                
+						
+            };
+ 
+            recognition.onnomatch = function (event) {
+                console.log("onnomatch");
+            };
+ 
+            recognition.onerror = function (event) {
+                console.log("onerror: " + event);
+ 
+            };
+ 
+            recognition.onstart = function (event) {
+                document.getElementById('acc').src = "wave3.gif";
+                let etiquetaAudio = document.createElement("audio")
+                etiquetaAudio.setAttribute("src", "./listen.wav")
+                etiquetaAudio.play()
+                
+                document.getElementById("resultadoparcial").innerHTML="(escuchando)";
+                console.log("onstart");
+                
+                setTimeout(() => stoprecog(), 5000)
+                
+            };
+ 
+            recognition.onend = function (event) {
+                console.log("onend");
+                document.getElementById('acc').src = "bigmic.png";
+                document.getElementById("resultadoparcial").innerHTML="(detenido)";
+                
+                // recarga la pagina y setea todo nuevamente
+                // window.location.reload();
+            };
+        };
+
+</script>
+    
+  
+    
+    
+
+</body></html>
