@@ -1,6 +1,6 @@
 # trinity
 Pequeño y liviano asistente para linux escrito en python.
-Esta basado en markopolo, pero ha sido modificado para mejorar su eficacia en el procesamiento de las ordenes recibidas.
+Esta basado en markopolo, pero ha sido modificado para mejorar su eficacia.
 
 ### Descripcion:
 Se trata de una version un poco mas elaborada que su predecesor markopolo, al menos en lo referido al analisis de sintaxis. Pues esta version realiza dos analisis de texto.
