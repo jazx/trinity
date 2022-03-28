@@ -10,6 +10,7 @@ Se trata de una version un poco mas elaborada que su predecesor markopolo, al me
 
 ### Dependencias del servidor:
 - python3
+- screen
 
 Cada cliente tiene su propio README.
 
