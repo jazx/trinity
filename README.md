@@ -6,7 +6,7 @@ Tambien corre sin necesidad de google-chrome haciendo uso de algunas minimas dep
 Incluye
 - palabra de activacion (trinity)
 - reconocmiento de voz (usando el servicio gratuito de google)
-- coamndos personalizados configurados mediante scripts de bash
+- comandos personalizados configurados mediante scripts de bash
 
 
 ### Funcionamiento:
