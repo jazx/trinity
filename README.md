@@ -17,22 +17,23 @@ Se trata de una version un poco mas elaborada que su predecesor markopolo, al me
 Hay, por lo tanto, un solo archivo *dictionary1.conf* . No obstante, hay tantos archivos *dictionary2.conf* como sectores existan. Cada sector incluye un diccionario. Permitiendo de esa forma especificar menos ambiguamente las acciones de ciertas palabras.
 Esto permite lidiar mas efectivamente contra la ambigüedad de muchas expresiones verbales.
 
-    Por ejemplo:
-        Dentro del sector VOLUMEN, la palabra "bajar" equivale normalmente a la accion de "disminuir".
-        Mientras que dentro del sector INTERNET, la palabra "bajar" suele equivaler a la accion de "descargar/download".
-        Con el uso de los dos filtros se pueden configurar con presicion el significado de las palabras.
+Por ejemplo:
+Dentro del sector VOLUMEN, la palabra "bajar" equivale normalmente a la accion de "disminuir".
+Mientras que dentro del sector INTERNET, la palabra "bajar" suele equivaler a la accion de "descargar/download".
+Con el uso de los dos filtros se pueden configurar con presicion el significado de las palabras.
 
 Para el uso de los diccionarios puede ver la documentacion y los videos de markopolo.
 
 
-### Dependencias del servidor:
-- python3
-- screen
-
 Cada cliente tiene su propio README.
 
-# INSTALACION Y EJECUCCION
-(En ubuntu y derivados)
-Inst
-  sudo apt install jazx 
+# INSTALACION
+
+Ubuntu y derivados:
+        wget 
+        sudo apt install python3-pyaudio libatlas-base-dev screen
+        
+# Ejecutar:
+        ./run_trinity.sh
+        
 
