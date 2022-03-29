@@ -3,6 +3,8 @@
 #identifica el directorio donde estan los archivos
 basedir=`readlink -e $0 | sed 's:\/[^\/]*$::g'`
 
-echo '  > Server python para Trinity Client'
+echo '  > Cliente python para Trinity'
+
+echo '--> Iniciando el client python (trinity)'
 cd $basedir/python-client
-./bin/python3 goclient.py
+screen -c ./screen_conf -S trinity_python_client -d -m ./bin/python3 trinity_client.py

@@ -3,11 +3,9 @@
 #identifica el directorio donde estan los archivos
 basedir=`readlink -e $0 | sed 's:\/[^\/]*$::g'`
 
-echo '--> Estableciendo nuevo PATH'
-PATH=$PATH:$basedir/server/bin
+echo '--> Deteniendo el servidor (trinity)'
+bash $basedir/server/stop_server.sh &> /dev/null &
 
-echo '--> Cerrando Brain (trinity)'
-kill `ps aux | grep 'SCREEN -c ../config/screen_conf -S trinity_brain -d -m ./trinity.py' | grep -v grep | awk '{print $2}'` 2> /dev/null
+echo '--> Deteniendo el cliente (trinity)'
+bash $basedir/client/python_01/stop_pyclient.sh &> /dev/null &
 
-echo '--> Reproduciendo saludo'
-trinity-randomwav bye 2> /dev/null &
