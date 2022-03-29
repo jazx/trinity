@@ -27,13 +27,16 @@ Para el uso de los diccionarios puede ver la documentacion y los videos de marko
 
 Cada cliente tiene su propio README.
 
-# INSTALACION
+### Como ejecutar en Ubuntu y derivados:
 
-Ubuntu y derivados:
-        wget 
+- Descargar/clonar este repositorio
+- Instalar Dependencias
+
         sudo apt install python3-pyaudio libatlas-base-dev screen
         
-# Ejecutar:
-        ./run_trinity.sh
+- Ejecutar:
+
+        ./run_trinity.sh                     (para iniciar el asistente)
+        ./stop_trinity.sh                    (para detener el asistente)
         
 
