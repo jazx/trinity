@@ -5,8 +5,6 @@ USUARIO=$1
 
 trinity-randomwav working &
 
-notify-send 'Trinity' 'Abriendo el navegador web'
-
 firefox &> /dev/null &
 
 echo 'Firefox fue abierto'
