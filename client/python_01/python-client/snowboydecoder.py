@@ -215,7 +215,13 @@ class HotwordDetector(object):
                     message = "Keyword " + str(status) + " detectedddd at time: "
                     message += time.strftime("%Y-%m-%d %H:%M:%S",
                                          time.localtime(time.time()))
-                    os.system("bash 01_hwd_detected.sh")
+                                         
+                                         
+                    stopfile = os.path.exists('/tmp/snowboystop')
+                    if stopfile == False:
+                    	os.system("bash 01_hwd_detected.sh")
+                    
+                    
                     #print ('Iniciando escucha de bclient...')
                     logger.info(message)
                     callback = detected_callback[status-1]

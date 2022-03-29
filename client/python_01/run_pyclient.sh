@@ -7,4 +7,6 @@ echo '  > Cliente python para Trinity'
 
 echo '--> Iniciando el client python (trinity)'
 cd $basedir/python-client
+# borrando lock de snowboy
+rm /tmp/snowboystop 2> /dev/null
 screen -c ./screen_conf -S trinity_python_client -d -m ./bin/python3 trinity_client.py
