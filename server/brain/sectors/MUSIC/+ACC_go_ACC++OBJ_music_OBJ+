@@ -4,8 +4,6 @@ INGRESO=$2
 USUARIO=$1
 
 
-notify-send 'Trinity' 'Abriendo Spotify'
-
 spotify 2&> /dev/null &
 
 markopolo-randomwav ../voice/endwork
