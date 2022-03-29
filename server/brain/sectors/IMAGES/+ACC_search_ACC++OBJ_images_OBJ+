@@ -5,8 +5,6 @@ USUARIO=$1
 
 trinity-randomwav working
 
-notify-send 'Trinity' 'Buscando en Pinterest'
-
 TARGET=`echo $INGRESO | sed 's/\(^.*imagenes+de+\|^.*pinterest+\)//g'`
 
 firefox --new-tab "https://ar.pinterest.com/search/pins/?q=$TARGET" &
