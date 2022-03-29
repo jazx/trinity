@@ -4,8 +4,6 @@ INGRESO=$2
 USUARIO=$1
 
 
-notify-send 'Trinity' 'Cerrando Spotify'
-
 pkill spotify 
 
 markopolo-randomwav ../voice/endwork
