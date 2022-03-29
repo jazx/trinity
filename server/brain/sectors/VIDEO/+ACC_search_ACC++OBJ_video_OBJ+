@@ -9,7 +9,7 @@ notify-send 'Markopolo' 'Buscando en Youtube'
 
 TARGET=`echo $INGRESO | sed 's/\(^.*videos+de+\|^.*youtube+\)//g'`
 
-firefox --new-tab "https://www.youtube.com/results?search_query=$TARGET" &
+firefox --new-tab "https://www.youtube.com/results?search_query=$TARGET" &> /dev/null &
 
 aplay `ls ../voice/endwork/* | shuf -n 1`
 
