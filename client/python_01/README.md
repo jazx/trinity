@@ -5,7 +5,7 @@ Puede funcionar para markopolo con facilidad. Tan solo configurando puertos y pa
 
 ## Bloqueo de wake-word
 En ocasiones el reconocimiento de voz suele molestar. Por ejemplo cuando estamos viendo un video.
-Para evitar la activacion de la wake-word basta con crear un archivo vacio. Utilice el comando:
+Para evitar la activacion de la wake-word basta con crear un archivo vacio. Utilice los siguientes comandos:
 
       touch /tmp/stopsnowboy            (para anular la activacion de la wake-word)
       rm /tmp/stopsnowboy               (para reestablecer el normal funcionamiento)
