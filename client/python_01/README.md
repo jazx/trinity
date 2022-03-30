@@ -7,8 +7,8 @@ Puede funcionar para markopolo con facilidad. Tan solo configurando puertos y pa
 En ocasiones el reconocimiento de voz suele molestar. Por ejemplo cuando estamos viendo un video.
 Para evitar la activacion de la wake-word basta con crear un archivo vacio. Utilice los siguientes comandos:
 
-      touch /tmp/stopsnowboy            (para anular la activacion de la wake-word)
-      rm /tmp/stopsnowboy               (para reestablecer el normal funcionamiento)
+      touch /tmp/snowboystop            (para anular la activacion de la wake-word)
+      rm /tmp/snowboystop               (para reestablecer el normal funcionamiento)
 
 ## Dependencias:
 - libatlas-base-dev
