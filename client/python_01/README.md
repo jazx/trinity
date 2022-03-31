@@ -35,5 +35,6 @@ En esta modalidad el cliente espera una wake-word antes de iniciar el reconocimi
 
 
 ### **2. En modo disparo único** 
-En esta modalidad el cliente activa el reconocimiento de voz y realizar la comunicacion por unica vez. Es util para configurarlo junto a un atajo de teclado, y tambien para utilizarlo en las "answers" del servidor. Ejecute...
+En esta modalidad el cliente activa el reconocimiento de voz y realiza la comunicacion con el servidor por unica vez. Es util para configurarlo en un atajo de teclado, y tambien para utilizarlo en las "answers" del servidor. Ejecute:
+
             ./pyclient_once.sh             (para iniciar la captura de audio)
