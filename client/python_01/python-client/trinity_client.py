@@ -23,31 +23,37 @@ def comunication_cli_srv():
 	texto = traducir()
 	os.system("bash 02_stt_result.sh '"+texto+"'")
 	print('Result: '+texto)
-	print('Send to server...')
-
+	
 	#preparando variables
 	txtinput = first_corrections(texto)
 	comando = txtinput.replace(' ', '+')
 	puerto = str(port_srv)
-
+	
 	laurl = "http://localhost:"+puerto+"/PSW_"+password_srv+"_PSWUSR_"+user_client+"_USRCOM_@"+comando+"_COM"
 	#comreq = urllib.request.urlopen(laurl)
 	
 	comreq = ''
-	trinityresponse = 'Trinity Server Error'
+	respuesta = 'Trinity Server Error'
 	
 	try:
-		comreq = urllib.request.urlopen(laurl)
-		trinityresponse = comreq.read()
+		if comando == '' :
+			print('No string to send.')
+		else:
+			print('Sending get request...')
+			comreq = urllib.request.urlopen(laurl)
+			trinityresponse = comreq.read()
+			
+			respuesta = str(trinityresponse)
+			respuesta = respuesta.replace("b'", '')
+			respuesta = respuesta.replace("\'", '')
+			
+			os.system("bash 03_srv_response.sh '" + respuesta + "'")
+			
 	except:
-		pass	
+		os.system("bash 03_srv_response.sh 'Trinity Server Error'")
+		pass
+		
 	
-	respuesta = str(trinityresponse)
-	respuesta = respuesta.replace("b'", '')
-	respuesta = respuesta.replace("\'", '')
-	
-	print("Server Response: "+respuesta)
-	os.system("bash 03_srv_response.sh '" + respuesta + "'")
 
 
 
