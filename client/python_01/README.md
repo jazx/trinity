@@ -3,6 +3,13 @@ Este es el primer cliente con reconocimiento de voz. Funciona solo desde python.
 Posee wake-word (palabra de activacion). En este caso "TRINITY".
 Puede funcionar para markopolo con facilidad. Tan solo configurando puertos y password.
 
+## Bloqueo de wake-word
+En ocasiones el reconocimiento de voz suele molestar. Por ejemplo cuando estamos viendo un video.
+Para evitar la activacion de la wake-word basta con crear un archivo vacio. Utilice los siguientes comandos:
+
+      touch /tmp/snowboystop            (para anular la activacion de la wake-word)
+      rm /tmp/snowboystop               (para reestablecer el normal funcionamiento)
+
 ## Dependencias:
 - libatlas-base-dev
 - python3-pyaudio
