@@ -40,6 +40,7 @@ def first_corrections(ingreso):
 	ingreso = ingreso.replace('%C3%8D','I')
 	ingreso = ingreso.replace('%C3%93','O')
 	ingreso = ingreso.replace('%C3%9A','U')
+	ingreso = ingreso.replace('%20','+')
 	return ingreso
 
 	
